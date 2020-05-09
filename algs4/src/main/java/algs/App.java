@@ -17,7 +17,7 @@ public class App {
   
       double err = 1e-15;
       double t = c;
-  
+
       while (Math.abs(t - c / t) > err * t) {
         t = (c / t + t) / 2.0;
       }

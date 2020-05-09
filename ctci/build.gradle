@@ -26,12 +26,9 @@ dependencies {
 
     // Use JUnit test framework
     testImplementation 'junit:junit:4.12'
-
-    // https://mvnrepository.com/artifact/edu.princeton.cs/algs4
-    implementation 'edu.princeton.cs:algs4:1.0.2'
 }
 
 application {
     // Define the main class for the application.
-    mainClassName = 'algs.App'
+    mainClassName = 'ctci.App'
 }
