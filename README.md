@@ -10,5 +10,6 @@ A colection of things I'm studying
 - [HackerHank Algorithms multiple languages](hackerhank)
 - [Haskell Playground](haskell)
 - [Istio Learning Material](istio)
-- [Java Algorithms](java)
+- [Algorithms, 4th Edition by Robert Sedgewick and Kevin Wayne](algs4)
 - [Sicp Examples and Exercices](sicp)
+- [Cracking the Coding Interview](ctci)
