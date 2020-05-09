@@ -5,7 +5,11 @@ import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.UF;
 
 public class Find {
-  public static void main(String[] args) {
+    public String find() {
+      return "todo: remove io";
+    }
+    
+    public static void main(String[] args) {
     int N = StdIn.readInt();
     UF uf = new UF(N);
     while (!StdIn.isEmpty()) {
