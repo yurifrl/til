@@ -1,4 +1,4 @@
-# TIL (Today I Learned)
+# Today I Learned
 
 A colection of things I'm studying
 
