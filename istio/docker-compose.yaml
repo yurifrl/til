@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  server:
+    image: "rancher/k3s:latest"
+    command: server --disable traefik
+    tmpfs:
+      - /run
+      - /var/run
+    privileged: true
+    environment:
+      - K3S_TOKEN=superSecret
+      - K3S_KUBECONFIG_OUTPUT=/output/kubeconfig.yaml
+      - K3S_KUBECONFIG_MODE=666
+    volumes:
+      - k3s-server:/var/lib/rancher/k3s
+      # This is just so that we get the kubeconfig file out
+      - .:/output
+    ports:
+      - 6443:6443
+  agent:
+    image: "rancher/k3s:latest"
+    tmpfs:
+      - /run
+      - /var/run
+    privileged: true
+    environment:
+      - K3S_URL=https://server:6443
+      - K3S_TOKEN=superSecret
+volumes:
+  k3s-server: {}

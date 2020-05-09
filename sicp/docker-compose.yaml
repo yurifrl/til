@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  test:
+    image: kisom/mit-scheme
+    entrypoint: scheme
+    working_dir: /app
+    volumes:
+      - .:/app

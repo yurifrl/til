@@ -1,0 +1,55 @@
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0-M3'
+  }
+}
+
+repositories {
+  mavenCentral()
+  jcenter()
+}
+
+apply plugin: 'java'
+apply plugin: 'org.junit.platform.gradle.plugin'
+
+
+junitPlatform {
+  filters {
+    tags {
+      exclude 'slow'
+    }
+  }
+}
+
+ext.junit4Version        = '4.12'
+ext.junitPlatformVersion = '1.0.0-M3'
+ext.junitVintageVersion  = '4.12.0-M3'
+ext.junitJupiterVersion  = '5.0.0-M3'
+ext.log4jVersion         = '2.6.2'
+
+dependencies {
+  // JUnit Jupiter API and TestEngine implementation
+  testCompile("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
+  testRuntime("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
+
+  // If you also want to support JUnit 3 and JUnit 4 tests
+  testCompile("junit:junit:${junit4Version}")
+  testRuntime("org.junit.vintage:junit-vintage-engine:${junitVintageVersion}")
+
+  testRuntime("org.apache.logging.log4j:log4j-core:${log4jVersion}")
+  testRuntime("org.apache.logging.log4j:log4j-jul:${log4jVersion}")
+
+  compile files('./src/main/resources/algs4.jar')
+  // compile files('./src/main/resources/stdlib.jar')
+  // compile 'edu.princeton.cs:algs4:1.0.2'
+}
+
+
+task run(type:JavaExec) {
+  main = 'com.app.App'
+  classpath = sourceSets.main.runtimeClasspath
+}
+

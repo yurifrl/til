@@ -1,0 +1,8 @@
+version: '2'
+services:
+  app:
+    image: gcc
+    command: make
+    working_dir: /usr/src/sandbox
+    volumes:
+      - ./:/usr/src/sandbox

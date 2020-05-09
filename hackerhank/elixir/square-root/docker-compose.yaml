@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  test:
+    image: elixir
+    command: mix main.exs
+    working_dir: /usr/local/src
+    volumes:
+      - .:/usr/local/src

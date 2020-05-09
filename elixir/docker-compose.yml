@@ -1,0 +1,19 @@
+version: '2'
+services:
+  web:
+    image: elixir
+    # command: mix test --listen-on-stdin --cover
+    command: mix test --cover
+    working_dir: /usr/local/src
+    environment:
+      - MIX_ENV=test
+    volumes:
+      - .:/usr/local/src
+  cover:
+    image: python:alpine
+    ports:
+      - 666:8000
+    working_dir: /app
+    command: python3 -m http.server
+    volumes:
+      - ./cover:/app
