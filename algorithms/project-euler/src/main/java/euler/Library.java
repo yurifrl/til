@@ -18,15 +18,19 @@ public class Library {
     }
     // By considering the terms in the Fibonacci sequence whose values do
     // not exceed four million, find the sum of the even-valued terms.
-    public int two(int s) {
-        int a = 1;
-        int b = 2;
-        for (int i = 0; i <= s; i ++) {
-            int ob = b;
-            b = a + b;
-            a = ob;
+    public int two(int n) {
+        int n1 = 0;
+        int n2 = 1;
+        int b = 0;
+        int res = 0;
+        for (; n > 0; n--) {
+            b = n1 + n2;
+            n1 = n2;
+            n2 = b;
+            res += b;
+            System.out.println("b: " + res);
         }
-        return b;
+        return res;
     }
     // two(10)
 }
