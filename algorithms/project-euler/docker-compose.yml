@@ -2,7 +2,7 @@ version: '3.7'
 services:
   test:
     image: gradle
-    command: gradle -t test
+    command: gradle test -t 2> /dev/null
     working_dir: /usr/src/app
     volumes:
       - .:/usr/src/app
