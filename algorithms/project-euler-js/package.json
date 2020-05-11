@@ -4,5 +4,11 @@
 	},
 	"devDependencies": {
 		"ava": "^3.8.2"
+	},
+	"ava": {
+		"failFast": true,
+    "timeout": "999999999999999999999",
+		"verbose": true,
+		"watch": true
 	}
 }
