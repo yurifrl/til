@@ -3,12 +3,12 @@ package euler;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class SmallestMultipleTest {
-    SmallestMultiple l = new SmallestMultiple();
+class Problem05Test {
+    Problem05 l = new Problem05();
 
-    @Test void testSmallestMultiple() {
-        assertEquals(2520, l.smallestMultiple(10));
-        assertEquals(232792560, l.smallestMultiple(20));
+    @Test void testExec() {
+        assertEquals(2520, l.exec(10));
+        assertEquals(232792560, l.exec(20));
     }
 
     @Test void testIsDivisibleByRange() {

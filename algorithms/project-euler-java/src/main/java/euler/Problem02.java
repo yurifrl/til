@@ -3,8 +3,9 @@ package euler;
 // 02. By considering the terms in the Fibonacci sequence whose values do
 // not exceed four million, find the sum of the even-valued terms.
 // https://adamdrake.com/an-unreasonably-deep-dive-into-project-euler-problem-2.html
-public class EvenFibonacciNumbers {
-    public int evenFibonacciNumbers(int n) {
+// Even Fibonacci numbers
+public class Problem02 {
+    public int exec(int n) {
         int n1 = 0;
         int n2 = 1;
         int temp = 0;

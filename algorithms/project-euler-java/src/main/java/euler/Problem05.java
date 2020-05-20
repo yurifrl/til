@@ -1,8 +1,8 @@
 package euler;
 
 // https://www.hackerrank.com/contests/projecteuler/challenges/euler005/problem
-public class SmallestMultiple {
-    public long smallestMultiple(long upperBound) {
+public class Problem05 {
+    public long exec(long upperBound) {
         for (long needle = 1; true; needle++) {
             if (isDivisibleByRange(needle, upperBound)) {
                 return needle;

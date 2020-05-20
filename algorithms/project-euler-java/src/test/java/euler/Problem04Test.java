@@ -3,8 +3,13 @@ package euler;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class LargestPalindromeProductTest {
-    LargestPalindromeProduct l = new LargestPalindromeProduct();
+class Problem04Test {
+    Problem04 l = new Problem04();
+
+    @Test void testExec() {
+        assertEquals(9009, l.exec(99, 99));
+        assertEquals(906609, l.exec(999, 999));
+    }
 
     @Test void testReverse() {
         assertEquals(807, l.reverse(708));
@@ -14,10 +19,5 @@ class LargestPalindromeProductTest {
     @Test void testIsPalindrome() {
         assertEquals(true, l.isPalindrome(909));
         assertEquals(false, l.isPalindrome(907));
-    }
-
-    @Test void testLargestPalindromeProduct() {
-        assertEquals(9009, l.largestPalindromeProduct(99, 99));
-        assertEquals(906609, l.largestPalindromeProduct(999, 999));
     }
 }

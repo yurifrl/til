@@ -2,8 +2,8 @@ package euler;
 
 // 04. Find the largest palindrome made from the product of two 3-digit numbers.
 // O(n²)
-public class LargestPalindromeProduct {
-    public long largestPalindromeProduct (long n1, long n2) {
+public class Problem04 {
+    public long exec (long n1, long n2) {
         long result = 0;
         long largest = 0;
         for (long i = n1; i > 0; i--) {

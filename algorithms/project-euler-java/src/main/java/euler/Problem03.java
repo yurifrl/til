@@ -4,8 +4,9 @@ package euler;
 // O(n log(n))
 // https://medium.com/@adzo261/project-euler-3-b193d741de8f
 // https://codereview.stackexchange.com/a/74600
-public class LargestPrimeFactor {
-    public long largestPrimeFactor(long n) {
+// Largest prime factor
+public class Problem03 {
+    public long exec(long n) {
         long factor = -1;
         // the upper bound is the square root of the number
         for (long i = 2; i * i <= n; i++) {
