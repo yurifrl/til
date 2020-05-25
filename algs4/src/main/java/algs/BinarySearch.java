@@ -5,28 +5,7 @@ import edu.princeton.cs.algs4.StdIn;
 import java.util.Arrays;
 import java.lang.Math;
 
-public class Exer01 {
-    public static double sqrt(double c) {
-      if (c < 0) {
-        return Double.NaN;
-      }
-
-      double err = 1e-15;
-      double t = c;
-
-      while (Math.abs(t - c / t) > err * t) {
-        t = (c / t + t) / 2.0;
-      }
-
-      return t;
-    }
-
-    public static double testAverage() {
-      Average.main(new String[] {});
-
-      return 0.0;
-    }
-
+public class BinarySearch {
     public static int rank(int key, int[] arr) {
       int lower = 0;
       int higher = arr.length - 1;
