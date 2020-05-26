@@ -55,29 +55,4 @@ public class Houses {
 
         return result;
     }
-
-    // public List<Integer> cellCompete(int[] cells, int days) {
-    //     int n = cells.length;
-    //     List<Integer> tmp = new ArrayList<Integer>();
-
-    //     // initialize
-    //     for (int i = 0; i < n; i++) {
-    //         tmp.add(i, cells[i]);
-    //     }
-
-    //     // Loop trought the days
-    //     while (days-- > 0) {
-    //         // Resolve edge cases
-    //         // match index 0 with index 1 and 0
-    //         tmp.set(0, 0 ^ tmp.get(1));
-    //         // match index 7 with index 6 and 0
-    //         tmp.set(n - 1, 0 ^ tmp.get(n - 2));
-
-    //         for (int i = 1; i < n - 2; i++) {
-    //             tmp.set(i, tmp.get(i - 1) ^ tmp.get(i + 1));
-    //         }
-    //     }
-
-    //     return tmp;
-    // }
 }
