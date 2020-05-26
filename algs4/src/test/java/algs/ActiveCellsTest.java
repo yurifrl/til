@@ -7,13 +7,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
-public class HousesTest {
-    Houses subject = new Houses();
+public class ActiveCellsTest {
+    ActiveCells subject = new ActiveCells();
 
     @Test public void CompeteTest() {
-        int[] input = { 1, 0, 0, 0, 0, 1, 0, 0 };
-        int[] output = { 0, 1, 0, 0, 1, 0, 1, 0 };
-        assertArrayEquals(output, subject.compete(input, input.length));
+        List<Integer> input = new ArrayList<Integer>(Arrays.asList(1, 0, 0, 0, 0, 1, 0, 0 ));
+        List<Integer> output = new ArrayList<Integer>(Arrays.asList(0, 1, 0, 0, 1, 0, 1, 0));
+        assertIterableEquals(output, subject.compete(input, input.size()));
     }
 
     @Test public void FirstTest() {
