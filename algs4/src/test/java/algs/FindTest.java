@@ -1,13 +1,17 @@
 package algs;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import utils.TinyUF;
 
 public class FindTest {
-    @Test public void secondTest() {
-      Find classUnderTest = new Find();
-      int[] id = {0,1,2,3,4,5,6,7,8,9};
-      assertNotNull("hy", classUnderTest.find());
+    public Find subject = new Find();
+
+    @Test
+    public void secondTest() throws Exception {
+        TinyUF res = new TinyUF();
+        assertEquals("hy", subject.find(res));
     }
 }
-

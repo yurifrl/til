@@ -1,12 +1,15 @@
 package algs;
 
+// Quick Find is eager
+// We cannot accept quadratic time
 public class QuickFindUF {
   private int[] id;
 
   public QuickFindUF(int N) {
     id = new int[N];
-    for (int i = 0; i< N; i++)
-      id[i] = i;
+    for (int i = 0; i< N; i++) {
+        id[i] = i;
+    }
   }
 
   public boolean connected(int p, int q) {
@@ -17,7 +20,10 @@ public class QuickFindUF {
     int pid = id[p];
     int qid = id[q];
 
-    for(int i = 0; i < id.length; i++)
-      if(id[i] == pid) id[i] = qid;
+    for(int i = 0; i < id.length; i++) {
+        if (id[i] == pid) {
+            id[i] = qid;
+        }
+    }
   }
 }

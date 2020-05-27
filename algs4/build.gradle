@@ -24,7 +24,8 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:28.2-jre'
 
-    // The princeton algs lib
+    // Algs4 princeton deps
+    // compile group: 'com.googlecode.princeton-java-algorithms', name: 'algorithms', version: '4.0.1'
     implementation 'edu.princeton.cs:algs4:1.0.2'
 
     // Use JUnit Jupiter API for testing.
@@ -36,6 +37,9 @@ dependencies {
     // Benchmark
     compile 'org.openjdk.jmh:jmh-core:1.23'
     annotationProcessor 'org.openjdk.jmh:jmh-generator-annprocess:1.23'
+
+    // The utils
+    compile project(':algs4-data-utils')
 }
 
 test {

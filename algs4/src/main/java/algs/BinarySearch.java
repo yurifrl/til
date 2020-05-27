@@ -1,9 +1,6 @@
 package algs;
 
-import edu.princeton.cs.algs4.Average;
-import edu.princeton.cs.algs4.StdIn;
 import java.util.Arrays;
-import java.lang.Math;
 
 public class BinarySearch {
     public static int rank(int key, int[] arr) {
