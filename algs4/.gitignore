@@ -6,3 +6,6 @@ build
 
 # Bin
 bin/*
+
+# Settings
+.settings/*
