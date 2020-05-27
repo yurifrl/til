@@ -12,6 +12,6 @@ public class FindTest {
     @Test
     public void secondTest() throws Exception {
         TinyUF res = new TinyUF();
-        assertEquals("hy", subject.find(res));
+        assertEquals("4 33 86 59 42 15 07 26 1", subject.find(res));
     }
 }
