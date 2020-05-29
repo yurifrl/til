@@ -15,14 +15,15 @@ class ArrayPairs {
     // (1,2), (1,3), (1,4), (1,5), (2,3), (2,4), (2,5) and (3,5).
     // Thus, we print  as our answer.
     static long arrayPairs(int n, int[] arr) {
-        List<int[]> list = new ArrayList<int[]>();
+        List<int[]> q = new ArrayList<int[]>();
 
         // Loop throug all pairs combination
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 int[] b = new int[]{arr[i], arr[j]};
-                System.out.println(b);
+                q.add(b);
             }
+            System.out.println(q);
         }
         return 1;
     }
