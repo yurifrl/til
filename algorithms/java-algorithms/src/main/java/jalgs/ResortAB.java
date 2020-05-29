@@ -1,4 +1,4 @@
-package jalgs;
+package javaAlgorithms;
 
 class ResortAB {
     // Complete the solve function below.

@@ -1,4 +1,4 @@
-package jalgs;
+package javaAlgorithms;
 
 public class GCD {
     // METHOD SIGNATURE BEGINS, THIS METHOD IS REQUIRED
