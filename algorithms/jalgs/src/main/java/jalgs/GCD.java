@@ -1,4 +1,4 @@
-package algs;
+package jalgs;
 
 public class GCD {
     // METHOD SIGNATURE BEGINS, THIS METHOD IS REQUIRED

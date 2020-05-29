@@ -1,4 +1,4 @@
-package algs;
+package jalgs;
 
 import java.util.ArrayList;
 import java.util.List;
