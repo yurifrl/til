@@ -8,6 +8,6 @@ public class ArrayPairsTest {
 
     @Test public void firstTest() {
         int[] input = {1, 1, 2, 4, 2};
-        assertEquals(5, subject.arrayPairs(input.length, input));
+        assertEquals(8, subject.arrayPairs(input.length, input));
     }
 }
