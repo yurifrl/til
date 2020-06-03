@@ -7,11 +7,10 @@
  */
 
 plugins {
-    // Apply the java plugin to add support for Java
-    id 'java'
-
-    // Apply the application plugin to add support for building a CLI application.
-    id 'application'
+    // Apply the java-library plugin to add support for Java Library
+    id 'java-library'
+    id 'me.champeau.gradle.jmh' version '0.5.0'
+    id 'com.adarshr.test-logger' version '2.0.0'
 }
 
 repositories {
@@ -20,15 +19,30 @@ repositories {
     jcenter()
 }
 
+
 dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:28.2-jre'
 
-    // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'
+    // Use JUnit Jupiter API for testing.
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+
+    // Use JUnit Jupiter Engine for testing.
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.0'
+
+    // Benchmark
+    compile 'org.openjdk.jmh:jmh-core:1.23'
+    annotationProcessor 'org.openjdk.jmh:jmh-generator-annprocess:1.23'
 }
 
-application {
-    // Define the main class for the application.
-    mainClassName = 'ctci.App'
+test {
+    // Use junit platform for unit tests
+    useJUnitPlatform()
+}
+
+// https://stackoverflow.com/questions/3963708/gradle-how-to-display-test-results-in-the-console-in-real-time
+// https://github.com/radarsh/gradle-test-logger-plugin
+testlogger {
+    theme 'mocha'
+    showStandardStreams true
 }
