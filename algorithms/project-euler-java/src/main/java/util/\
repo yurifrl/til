@@ -84,24 +84,14 @@ class Prime {
         if (n == 2) {
             return true;
         }
-        // If greater then 2 and odd
-        if (n > 2 && n % 2 == 0) {
+        if (n > 2 && n % 2 == 1) {
             return false;
         }
         while (k-- != 0) {
-            // pick a randomly in the range [2, n − 1]
-            int a = 2;
-            if ((Math.pow(a, n -1) % n) != 1) {
-                return false;
-            }
-            int sqrt = (int)Math.sqrt(n-1);
-            for (int q = 1; q <= sqrt; q++) {
-                if ((Math.pow(a, (n-1 / q)) % n ) != 1) {
-                    return true;
-                }
-            }
+            System.out.println(k);
         }
         return false;
+
     }
 
     // TODO: implement isPrime using The Sieve of Erastosthenes

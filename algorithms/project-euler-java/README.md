@@ -3,7 +3,6 @@
 ## Data Structures Notes
 - HashSet doesn't allow duplicates
 
-
 ## Prime notes
 - To check that a number is prime, from worst to better:
   - Check if any number divide into it
@@ -20,6 +19,10 @@
 - https://www.khanacademy.org/math/pre-algebra/pre-algebra-factors-multiples/pre-algebra-prime-factorization-prealg/v/prime-factorization
 - https://www.youtube.com/watch?v=BpBh8gvMifs
 
+## Glossary
+
+- Mersenne prime is a prime number that is one less than a power of two.
+
 ## References
 
 - https://www.baeldung.com/java-microbenchmark-harness
@@ -31,3 +34,5 @@
   - https://github.com/midonet/midonet/blob/master/docs/micro-benchmarks.md
   - https://github.com/asuraiv/benchmark/blob/master/src/main/java/com/asuraiv/benchmark/sort/SortBenchMark.java
   - https://github.com/melix/jmh-gradle-example/blob/master/src/jmh/java/org/openjdk/jmh/samples/JMHSample_01_HelloWorld.java
+- [Pseudo code nice example](https://tex.stackexchange.com/questions/204592/how-to-format-a-pseudocode-algorithm)
+- [Remember to reference pseudocode wikipedia article](https://en.wikipedia.org/wiki/Pseudocode)

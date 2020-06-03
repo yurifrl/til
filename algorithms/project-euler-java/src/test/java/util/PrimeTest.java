@@ -9,7 +9,7 @@ import com.google.common.collect.ImmutableMap;
 import org.junit.jupiter.api.Test;
 
 class PrimeTest {
-    Map<Integer, Boolean> inputs = ImmutableMap.<Integer, Boolean>builder()
+    Map<Integer, Boolean> naturalNumbers = ImmutableMap.<Integer, Boolean>builder()
         .put(1, false)
         .put(2, true)
         .put(3, true)
@@ -22,33 +22,57 @@ class PrimeTest {
         .put(10, false)
         .build();
 
-    // @Test
-    // void isPrimeWithSquareSqrtTest() {
-    //     for (Map.Entry<Integer, Boolean> i : inputs.entrySet()) {
-    //         assertEquals(i.getValue(), Prime.isPrimeByLucasLehmer(i.getKey()), i.getKey().toString());
-    //     }
-    // }
+    Map<Integer, Boolean> merseneNumbers = ImmutableMap.<Integer, Boolean>builder()
+        .put(1, false)
+        .put(2, true)
+        .put(3, true)
+        .put(4, false)
+        .put(5, true)
+        .put(6, false)
+        .put(7, true)
+        .put(8, false)
+        .put(9, false)
+        .put(10, false)
+        .put(11, false)
+        .put(12, false)
+        .put(13, true)
+        .put(14, false)
+        .put(15, false)
+        .put(16, false)
+        .put(17, true)
+        .put(19, true)
+        .put(31, true)
+        .put(127, true)
+        .build();
 
-    // @Test
-    // void isPrimeByDivisonToTheHalfTest() {
-    //     for (Map.Entry<Integer, Boolean> i : inputs.entrySet()) {
-    //         assertEquals(i.getValue(), Prime.isPrimeByLucasLehmer(i.getKey()), i.getKey().toString());
-    //     }
-    // }
 
     @Test
-    void isPrimeByLucasLehmerTest() {
-        for (Map.Entry<Integer, Boolean> i : inputs.entrySet()) {
-            assertEquals(i.getValue(), Prime.isPrimeByLucasLehmer(i.getKey()), i.getKey().toString());
+    void isPrimeWithSquareSqrtTest() {
+        for (Map.Entry<Integer, Boolean> i : naturalNumbers.entrySet()) {
+            assertEquals(i.getValue(), Prime.isPrimeWithSqrt(i.getKey()), i.getKey().toString());
         }
     }
 
     @Test
-    void testLucasLehmerSequenceTest() {
-        assertEquals(4, Prime.getLucasLehmerNumberAtPoint(0));
-        assertEquals(14, Prime.getLucasLehmerNumberAtPoint(1));
-        assertEquals(194, Prime.getLucasLehmerNumberAtPoint(2));
-        assertEquals(37634, Prime.getLucasLehmerNumberAtPoint(3));
-        assertEquals(1416317954, Prime.getLucasLehmerNumberAtPoint(4));
+    void isPrimeByDivisonToTheHalfTest() {
+        for (Map.Entry<Integer, Boolean> i : naturalNumbers.entrySet()) {
+            assertEquals(i.getValue(), Prime.isPrimeByDivisionToTheHalf(i.getKey()), i.getKey().toString());
+        }
+    }
+
+    @Test
+    void isMerseneNumberPrimeByLucasLehmerTest() {
+        for (Map.Entry<Integer, Boolean> i : merseneNumbers.entrySet()) {
+            assertEquals(i.getValue(), Prime.isMerseneNumberPrimeByLucasLehmer(i.getKey()), i.getKey().toString());
+        }
+    }
+
+    @Test
+    void isPrimeByLucasTest() {
+        // for (Map.Entry<Integer, Boolean> i : naturalNumbers.entrySet()) {
+        //     assertEquals(i.getValue(), Prime.isPrimeByLucas(i.getKey()), i.getKey().toString());
+        // }
+
+        assertEquals(true, Prime.isPrimeByLucas(3));
     }
 }
