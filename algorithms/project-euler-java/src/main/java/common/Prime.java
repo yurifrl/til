@@ -1,4 +1,4 @@
-package util;
+package common;
 
 // Primes
 // To check that a number is prime, from worst to better:
@@ -106,4 +106,7 @@ class Prime {
 
     // TODO: implement isPrime using The Sieve of Erastosthenes
     // This way you compare the factors with only prime numbers
+    public boolean isPrimeByTheSieveOfErastosthenes(long n) {
+        return false;
+    }
 }

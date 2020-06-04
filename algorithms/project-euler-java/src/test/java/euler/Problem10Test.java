@@ -24,6 +24,6 @@ class Problem10Test {
 
     @Test
     void secondLogTest() {
-        assertEquals(Long.valueOf("42913828922"), subject.second(Long.valueOf("2000000")));
+        assertEquals(Long.valueOf("142913828922"), subject.second(Long.valueOf("2000000")));
     }
 }
