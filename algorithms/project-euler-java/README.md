@@ -8,6 +8,7 @@
   - Check if any number divide into it
   - Only check if primes divede into it
   - Only if primes up to the square root divide in to it
+- Every prime other them 2 is odd so if you are search for them you can skip the evens
 
 ## Problem 09
 - https://www.youtube.com/watch?v=BpBh8gvMifs

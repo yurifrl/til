@@ -13,14 +13,10 @@ public class Problem10 {
     }
 
     private boolean isPrime(long n) {
-        int counter = 0;
         long sqrt = (long) Math.sqrt(n);
 
-        for(long i = 1; i <= sqrt; i++) {
+        for(long i = 2; i <= sqrt; i++) {
             if(n % i == 0) {
-                counter++;
-            }
-            if(counter > 1) {
                 return false;
             }
         }
@@ -30,6 +26,13 @@ public class Problem10 {
 
     // Second try
     public long second(long n) {
-        return -1;
+        long sum = 2;
+        // skip evens
+        for (long x = 3; x < n; x += 2) {
+            if(isPrime(x)) {
+                sum += x;
+            }
+        }
+        return sum;
     }
 }

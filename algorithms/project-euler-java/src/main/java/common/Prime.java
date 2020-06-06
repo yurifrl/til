@@ -1,5 +1,7 @@
 package common;
 
+import java.util.*;
+
 // Primes
 // To check that a number is prime, from worst to better:
 //   Check if any number divide into it
@@ -28,14 +30,10 @@ class Prime {
             return false;
         }
 
-        int counter = 0;
         long sqrt = (long) Math.sqrt(n);
 
-        for(long i = 1; i <= sqrt; i++) {
+        for(long i = 2; i <= sqrt; i++) {
             if(n % i == 0) {
-                counter++;
-            }
-            if(counter > 1) {
                 return false;
             }
         }
@@ -106,7 +104,36 @@ class Prime {
 
     // TODO: implement isPrime using The Sieve of Erastosthenes
     // This way you compare the factors with only prime numbers
-    public boolean isPrimeByTheSieveOfErastosthenes(long n) {
-        return false;
+    public static boolean isPrimeByTheSieveOfErastosthenes(long n) {
+        if (n == 1) {
+            return false;
+        }
+        if (n == 2) {
+            return true;
+        }
+        // Create a boolean array "prime[0..n]" and initialize
+        // all entries it as true. A value in prime[i] will
+        // finally be false if i is Not a prime, else true.
+        List<Long> primes = new ArrayList<>();
+        // boolean primes[] = new boolean[n + 1];
+        for(long i=2; i < n; i++) {
+            primes.add(i);
+        }
+
+        for(long p = 2; p*p <= n; p++) {
+            // If prime[p] is not changed, then it is a prime
+            // Update all multiples of p
+            for(long i = p*2; i <= n; i += p) {
+                primes.remove(i);
+            }
+        }
+
+        for(int i = 0; i < primes.size(); i++) {
+            if(primes.get(i) % n == 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
