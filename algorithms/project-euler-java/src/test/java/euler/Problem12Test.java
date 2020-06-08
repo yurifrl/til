@@ -12,8 +12,8 @@ class Problem12Test {
         assertEquals(28, subject.first(5));
     }
 
-    // @Test
-    // void longTest() {
-    //     assertEquals(28, subject.first(10));
-    // }
+    @Test
+    void longTest() {
+        assertEquals(76576500, subject.first(500));
+    }
 }
