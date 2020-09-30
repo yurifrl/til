@@ -1,2 +1,1 @@
-alias Sandbox
-alias Sandbox.Chat
+alias Chat
