@@ -1,4 +1,4 @@
-defmodule Polygon do
+defmodule Sandbox.Triangle.Polygon do
   @type type :: :equilateral | :isosceles | :scalene
 
   @moduledoc """
@@ -9,7 +9,7 @@ defmodule Polygon do
   A less then 3 sided polygon is a invalid polygon
 
   ## Examples
-    iex> Polygon.type([2, 2])
+    iex> type([2, 2])
     { :error, :invalid }
   """
   def type(a) when length(a) < 3, do: { :error, :invalid }
@@ -17,16 +17,16 @@ defmodule Polygon do
   @doc """
   Returns the type of a n sided polygon.
   ## Examples
-    iex> Polygon.type([1, 1, 1])
+    iex> type([1, 1, 1])
     { :ok, :equilateral }
 
-    iex> Polygon.type([1, 1, 2])
+    iex> type([1, 1, 2])
     { :ok, :isosceles }
 
-    iex> Polygon.type([1, 2, 3])
+    iex> type([1, 2, 3])
     { :ok, :scalene }
 
-    iex> Polygon.type([1, 2, 0])
+    iex> type([1, 2, 0])
     { :error, :invalid }
   """
   @spec type(list(pos_integer())) :: { :ok, type } | { :error, :atom }
@@ -46,7 +46,7 @@ defmodule Polygon do
     Pipe Triangles to the Triangle Module
     I let it run til it finds a invalid list
   ## Examples
-    iex> Polygon.type([1, 1, 1])
+    iex> type([1, 1, 1])
     { :ok, :equilateral }
   """
   defp type([_, _], [{:ok, result}]), do: { :ok, result }
@@ -81,13 +81,13 @@ defmodule Polygon do
   Initialize the accumulator
 
   ## Examples
-    iex> Polygon.type([9, 8, 8, 8, 8, 8])
+    iex> type([9, 8, 8, 8, 8, 8])
     { :ok, :isosceles }
-    iex> Polygon.type([1, 2, 3, 4])
+    iex> type([1, 2, 3, 4])
     { :ok, :scalene }
   """
   defp type([ head | tail ], accumulator) do
     [b, c] = Enum.take(tail, 2)
-    type(tail, [ Triangle.type(head, b, c) | accumulator ])
+    type(tail, [ Sandbox.Triangle.type(head, b, c) | accumulator ])
   end
 end

@@ -1,4 +1,4 @@
-defmodule Triangle.StreamAdapter do
+defmodule Sandbox.Triangle.StreamAdapter do
   @type read :: :stream
 
   @moduledoc """
@@ -11,8 +11,8 @@ defmodule Triangle.StreamAdapter do
   3 number group and Return the computed result as stream
 
   ##Example
-    Triangle.StreamAdapter.read("./test/test.data")
-    #=> :stream
+    iex> read("./test/test.data")
+    :stream
   """
   @spec read(String.t) :: :stream | { :error, String.t }
   def read(file) do
@@ -26,14 +26,15 @@ defmodule Triangle.StreamAdapter do
   Process a string, breaking it in chunks of 3 and giving it's types
 
   ##Example
-    iex> Triangle.StreamAdapter.read_chunk("314")
+    iex> read_chunk("314")
     [{:ok, :scalene, {3, 1, 4}}]
   """
   @spec read_chunk(String.t) :: list | { :error, Strint.t }
   def read_chunk(string) do
     string
     |> String.graphemes
-    |> Enum.filter_map(&is_numeric/1, &String.to_integer/1)
+    |> Enum.filter(&String.to_integer/1)
+    |> Enum.filter(&is_numeric/1)
     |> Enum.chunk(3)
     |> Enum.map(&read_array/1)
   end
@@ -45,5 +46,5 @@ defmodule Triangle.StreamAdapter do
     end
   end
 
-  defp read_array([a, b, c]), do: Tuple.append Triangle.type(a, b, c), {a, b, c}
+  defp read_array([a, b, c]), do: Tuple.append Sandbox.Triangle.type(a, b, c), {a, b, c}
 end
