@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  creationTimestamp: null
+  labels:
+    app: stream
+  name: stream
+spec:
+  serviceName: "stream"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stream
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: stream
+    spec:
+      containers:
+      - image: gcr.io/yurifrl-test/streama
+        lifecycle:
+          postStart:
+            exec:
+              command:
+                - /bin/sh
+                - -c
+                - cp /var/secrets/application.yaml /app/streama
+        name: streama
+        ports:
+        - containerPort: 8080
+        resources: {}
+        volumeMounts:
+          - name: streama
+            mountPath: /var/secrets
+            readOnly: true
+          - name: data
+            mountPath: /data
+      - image: gcr.io/yurifrl-test/cloud-torrent
+        name: torrent
+        args: ["--config-path=/config/cloud-torrent.json"]
+        ports:
+        - containerPort: 3000
+        resources: {}
+        env:
+          - name: AUTH
+            valueFrom:
+              secretKeyRef:
+                name: torrent
+                key: auth
+        volumeMounts:
+          - name: config
+            mountPath: /config
+          - name: data
+            mountPath: /data
+      volumes:
+        - name: config
+          configMap:
+            name: stream
+        - name: streama
+          secret:
+            secretName: streama
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 100Gi
