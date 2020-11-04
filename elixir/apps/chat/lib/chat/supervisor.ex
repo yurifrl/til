@@ -1,12 +1,19 @@
 defmodule Chat.Supervisor do
+  # Automatically defines child_spec/1
   use Supervisor
 
-  def start_link do
-    Supervisor.start_link(__MODULE__, [])
+  def start_link(opts \\ []) do
+    Supervisor.start_link(__MODULE__, opts, name: __MODULE__)
   end
-  def init(_) do
+
+  @impl true
+  def init(_init_arg) do
     children = [
-      worker(Chat.Server, [], restart: :temporary)
+      {Chat.Controller, []},
+      {Chat.EventManager, []},
+      {Chat.Registry, []},
+      {DynamicSupervisor, strategy: :one_for_one, name: Chat.RoomDynamicSupervisor},
+      {DynamicSupervisor, strategy: :one_for_one, name: Chat.UserDynamicSupervisor},
     ]
 
     Supervisor.init(children, strategy: :one_for_one)

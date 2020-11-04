@@ -1,0 +1,10 @@
+# -*- mode: Python -*-
+
+docker_build(
+  'chat',
+  '.',
+  entrypoint=['_build/dev/rel/chat/bin/chat'],
+  build_args={"MIX_ENV": "dev"}
+)
+k8s_yaml('hack/deploy.yaml')
+k8s_resource('chat', port_forwards=8080)
