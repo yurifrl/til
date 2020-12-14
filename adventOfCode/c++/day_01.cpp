@@ -2,6 +2,7 @@
 #include <bits/stdc++.h>
 #include <unordered_set>
 
+
 const int n_to_find = 2020;
 
 int sum_with_3(int lc, int l[]) {
