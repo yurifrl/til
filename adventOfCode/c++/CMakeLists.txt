@@ -8,3 +8,4 @@ project (aoc)
 # Add an executable
 add_executable(day01 day_01.cpp)
 add_executable(day02 day_02.cpp)
+add_executable(day03 day_03.cpp)
