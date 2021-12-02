@@ -1,0 +1,32 @@
+# Day 1
+
+## Section
+
+https://adventofcode.com/2021/day/1
+
+<!-- livebook:{"livebook_object":"cell_input","name":"input","type":"textarea","value":"199\n200\n208\n210\n200\n207\n240\n269\n260\n263"} -->
+
+```elixir
+input =
+  Stream.iterate("", fn _ -> IO.gets("input") end)
+  |> Stream.take_while(&(&1 != :eof))
+  |> Stream.map(&String.trim/1)
+  |> Stream.reject(&(&1 == ""))
+```
+
+```elixir
+input |> Enum.to_list()
+```
+
+```elixir
+defmodule Exer do
+  def run(input) do
+    run(input, 0)
+  end
+
+  def run(input, acc) do
+  end
+end
+
+input |> Exer.run()
+```

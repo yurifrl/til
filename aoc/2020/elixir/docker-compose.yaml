@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  livebook:
+    image: livebook/livebook
+    environment:
+      RELEASE_NODE: livebook@127.0.0.1
+      RELEASE_COOKIE: null
+      RELEASE_DISTRIBUTION: name
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/data
