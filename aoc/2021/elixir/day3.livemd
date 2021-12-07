@@ -1,0 +1,115 @@
+# Day 2
+
+## Binary Diagnostic
+
+https://adventofcode.com/2021/day/3
+
+https://adventofcode.com/2021/day/3/input
+
+## Input
+
+<!-- livebook:{"livebook_object":"cell_input","name":"input","type":"textarea","value":"00100\n11110\n10110\n10111\n10101\n01111\n00111\n11100\n10000\n11001\n00010\n01010"} -->
+
+```elixir
+input =
+  Stream.iterate("", fn _ -> IO.gets("input") end)
+  |> Stream.take_while(&(&1 != :eof))
+  |> Stream.map(&String.trim/1)
+  |> Stream.reject(&(&1 == ""))
+  |> Stream.map(&String.graphemes/1)
+  |> Enum.to_list()
+  |> Enum.map(fn line ->
+    Enum.map(line, &String.to_integer/1)
+  end)
+```
+
+## Part 1
+
+```elixir
+ones =
+  input
+  |> Enum.zip_reduce([], fn elements, acc ->
+    [Enum.count(elements, &(&1 == 1)) | acc]
+  end)
+
+zeroes = Enum.map(ones, &(length(input) - &1))
+
+{ones_bin, zeroes_bin} =
+  Enum.zip_reduce(ones, zeroes, {[], []}, fn
+    l, r, {on, ze} when l > r -> {[1 | on], [0 | ze]}
+    _, _, {on, ze} -> {[0 | on], [1 | ze]}
+  end)
+
+ones_bin =
+  ones_bin
+  |> Enum.join()
+  |> Integer.parse(2)
+  |> elem(0)
+
+zeroes_bin =
+  zeroes_bin
+  |> Enum.join()
+  |> Integer.parse(2)
+  |> elem(0)
+
+ones_bin * zeroes_bin
+```
+
+## Part 2
+
+```elixir
+defmodule Part2 do
+  def reduce(_, _, 13), do: raise("ONO")
+  def reduce([head], _, _), do: head
+
+  def reduce(all, name, index) do
+    most_common(all, name, index)
+    |> remove_at(all, index)
+    |> reduce(name, index + 1)
+  end
+
+  def most_common(all, name, index) do
+    items = Enum.zip(all) |> Enum.at(index) |> Tuple.to_list() |> Enum.frequencies()
+
+    ones = Map.get(items, 1, 0)
+    zeroes = Map.get(items, 0, 0)
+
+    compare(name, ones, zeroes)
+  end
+
+  def remove_at(most_common, all, index) do
+    Enum.reduce(all, [], fn x, acc ->
+      if Enum.at(x, index) == most_common do
+        acc ++ [x]
+      else
+        acc
+      end
+    end)
+  end
+
+  def compare(:co2, x, y) when x >= y, do: 0
+  def compare(:co2, _, _), do: 1
+  def compare(:oxygen, x, y) when x >= y, do: 1
+  def compare(:oxygen, _, _), do: 0
+end
+
+# 23
+oxygen_generator_rating = Part2.reduce(input, :oxygen, 0)
+
+x =
+  oxygen_generator_rating
+  |> Enum.join()
+  |> Integer.parse(2)
+  |> elem(0)
+
+# 10
+co2_scrubber_rating = Part2.reduce(input, :co2, 0)
+
+y =
+  co2_scrubber_rating
+  |> Enum.join()
+  |> Integer.parse(2)
+  |> elem(0)
+
+x * y
+```

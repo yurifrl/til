@@ -4,6 +4,8 @@
 
 https://adventofcode.com/2021/day/1
 
+https://adventofcode.com/2021/day/1/input
+
 <!-- livebook:{"livebook_object":"cell_input","name":"input","type":"textarea","value":"199\n200\n208\n210\n200\n207\n240\n269\n260\n263"} -->
 
 ```elixir
@@ -12,21 +14,13 @@ input =
   |> Stream.take_while(&(&1 != :eof))
   |> Stream.map(&String.trim/1)
   |> Stream.reject(&(&1 == ""))
+  |> Enum.map(&String.to_integer/1)
+  |> Enum.to_list()
 ```
 
 ```elixir
-input |> Enum.to_list()
-```
+[hd | tail] = input
 
-```elixir
-defmodule Exer do
-  def run(input) do
-    run(input, 0)
-  end
-
-  def run(input, acc) do
-  end
-end
-
-input |> Exer.run()
+tail
+|> Enum.reduce({hd, 0}, fn i, {p, c} -> if i > p, do: {i, c + 1}, else: {i, c} end)
 ```

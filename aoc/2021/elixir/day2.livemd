@@ -1,0 +1,84 @@
+# Day 2
+
+## Dive!
+
+https://adventofcode.com/2021/day/2
+
+https://adventofcode.com/2021/day/2/input
+
+## Part 1
+
+<!-- livebook:{"livebook_object":"cell_input","name":"input","type":"textarea","value":"forward 5\ndown 5\nforward 8\nup 3\ndown 8\nforward 2"} -->
+
+```elixir
+input =
+  Stream.iterate("", fn _ -> IO.gets("input") end)
+  |> Stream.take_while(&(&1 != :eof))
+  |> Stream.map(&String.trim/1)
+  |> Stream.reject(&(&1 == ""))
+  |> Stream.map(&String.split/1)
+  |> Stream.map(fn [x, y] -> [x, String.to_integer(y)] end)
+  |> Enum.to_list()
+```
+
+```elixir
+defmodule Diver do
+  def init() do
+    %{horizontal: 0, depth: 0}
+  end
+
+  def forward(%{horizontal: horizontal} = state, x) do
+    %{state | horizontal: horizontal + x}
+  end
+
+  def down(%{depth: depth} = state, x) do
+    %{state | depth: depth + x}
+  end
+
+  def up(%{depth: depth} = state, x) do
+    %{state | depth: depth - x}
+  end
+end
+
+%{depth: depth, horizontal: horizontal} =
+  input
+  |> Enum.reduce(Diver.init(), fn
+    ["forward", x], acc -> Diver.forward(acc, x)
+    ["down", x], acc -> Diver.down(acc, x)
+    ["up", x], acc -> Diver.up(acc, x)
+  end)
+
+depth * horizontal
+```
+
+## Part 2
+
+```elixir
+defmodule Diver do
+  def init() do
+    %{aim: 0, horizontal: 0, depth: 0}
+  end
+
+  def up(%{aim: aim} = state, x) do
+    %{state | aim: aim - x}
+  end
+
+  def down(%{aim: aim} = state, x) do
+    %{state | aim: aim + x}
+  end
+
+  def forward(%{horizontal: horizontal, aim: aim, depth: depth} = state, x) do
+    %{state | horizontal: horizontal + x, depth: depth + aim * x}
+  end
+end
+
+%{depth: depth, horizontal: horizontal} =
+  input
+  |> Enum.reduce(Diver.init(), fn
+    ["forward", x], acc -> Diver.forward(acc, x)
+    ["down", x], acc -> Diver.down(acc, x)
+    ["up", x], acc -> Diver.up(acc, x)
+  end)
+
+depth * horizontal
+```
