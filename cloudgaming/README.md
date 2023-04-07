@@ -1,8 +1,19 @@
 # Run Star Citizen on Azure
 
+```powershell
+[Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls" 
+$ScriptWebArchive = "https://github.com/yuriflr/til/archive/main.zip"  
+$LocalArchivePath = "$ENV:UserProfile\Downloads\script"  
+(New-Object System.Net.WebClient).DownloadFile($ScriptWebArchive, "$LocalArchivePath.zip")  
+Expand-Archive "$LocalArchivePath.zip" -DestinationPath $LocalArchivePath -Force  
+CD $LocalArchivePath\script-main\ | powershell.exe .\cloudgaming\scripts.ps1 
+```
+
+
 # Guides
 - [Cloud Gaming On An Azure Server Using Parsec](https://parsec.app/blog/cloud-gaming-on-an-azure-server-using-parsec-2edcd24636f8)
 - [Install NVIDIA GPU drivers on N-series VMs running Windows](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/n-series-driver-setup)
+- [parsec script](https://github.com/parsec-cloud/Parsec-Cloud-Preparation-Tool/tree/master)
 
 # Downloads
 
