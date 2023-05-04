@@ -3,7 +3,7 @@
 		"test": "ava"
 	},
 	"devDependencies": {
-		"ava": "^3.8.2"
+		"ava": "^5.2.0"
 	},
 	"ava": {
 		"failFast": true,
