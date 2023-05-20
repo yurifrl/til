@@ -18,5 +18,8 @@ var _ = pp.Println
 // pale, bale -> true
 // pale, bae -> false
 func OneWay(entry1 string, entry2 string) bool {
+	e1 := []rune(entry1)
+	e2 := []rune(entry2)
+	pp.Println(e1, e2)
 	return false
 }
