@@ -18,8 +18,54 @@ var _ = pp.Println
 // pale, bale -> true
 // pale, bae -> false
 func OneWay(entry1 string, entry2 string) bool {
-	e1 := []rune(entry1)
-	e2 := []rune(entry2)
-	pp.Println(e1, e2)
-	return false
+	// a array of e entry 1
+	sei := []rune(entry1)
+	sej := []rune(entry2)
+	a := make(map[rune]int, len(entry1))
+	// insert := false
+	// remove := false
+	// replace := false
+
+	mismatchCount := 0
+	for i, j := 0, 0; i < len(sei); {
+		if sei[i] != sej[j] {
+			mismatchCount++
+		}
+		if mismatchCount > 1 {
+			return false
+		}
+		if i < len(sei) {
+			i++
+		}
+		if j < len(sej) && mismatchCount != 1 {
+			j++
+		}
+
+	}
+
+	for i := range sei {
+		a[sei[i]]++
+		if i < len(sej) {
+			a[sej[i]]++
+		}
+	}
+
+	for k, v := range a {
+		pp.Println(string(k), v)
+	}
+
+	// replace
+	difCount := 0
+	for _, v := range a {
+		// if the characters that differ are more then one than it cannot be replac
+		if v == 1 {
+			difCount++
+		}
+		if difCount > 1 {
+			return false
+		}
+	}
+	// insert delete
+
+	return true
 }
