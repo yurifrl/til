@@ -1,0 +1,10 @@
+{
+    "[jupyter]": {
+        "editor.parameterHints.enabled": false,
+        "editor.suggestOnTriggerCharacters": false,
+        "editor.tabCompletion": "off",
+        "editor.wordBasedSuggestions": false,
+        "editor.acceptSuggestionOnCommitCharacter": false,
+        "editor.acceptSuggestionOnEnter": "off"
+    }
+}
